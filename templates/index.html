@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Gold Price Prediction</h1>
+        <form id="predictionForm">
+            <!-- เลือกโมเดล -->
+            <label for="modelSelect">Select Model:</label>
+            <select id="modelSelect" name="modelSelect">
+                <option value="ensemble">Ensemble (LSTM + XGBoost)</option>
+                <option value="lstm">LSTM</option>
+                <option value="xgboost">XGBoost</option>
+            </select>
+
+            <!-- เลือกไทม์เฟรม -->
+            <label for="timeframeSelect">Select Timeframe:</label>
+            <select id="timeframeSelect" name="timeframeSelect">
+                <option value="M1">M1</option>
+                <option value="M5">M5</option>
+                <option value="H1">H1</option>
+                <option value="D1">D1</option>
+            </select>
+
+            <!-- ปรับพารามิเตอร์ -->
+            <label for="paramsInput">Adjust Parameters (comma-separated):</label>
+            <input type="text" id="paramsInput" name="paramsInput" placeholder="e.g., 50,0.1,10" required>
+
+            <!-- ป้อนข้อมูล -->
+            <label for="dataInput">Enter Data (comma-separated):</label>
+            <input type="text" id="dataInput" name="dataInput" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
